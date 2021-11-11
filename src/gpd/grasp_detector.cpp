@@ -243,7 +243,7 @@ namespace gpd
     double t_candidates = omp_get_wtime() - t0_candidates;
     if (plot_candidates_)
     {
-      plotter_->plotFingers3D(hand_set_list, cloud.getCloudOriginal(),
+      plotter_->plotFingers3D(hand_set_list, cloud.getCloudProcessed(),
                               "Grasp candidates", hand_geom);
     }
 
@@ -257,7 +257,7 @@ namespace gpd
     }
     if (plot_filtered_candidates_)
     {
-      plotter_->plotFingers3D(hand_set_list_filtered, cloud.getCloudOriginal(),
+      plotter_->plotFingers3D(hand_set_list_filtered, cloud.getCloudProcessed(),
                               "Filtered Grasps (Aperture, Workspace)", hand_geom);
     }
     if (filter_approach_direction_)
@@ -266,7 +266,7 @@ namespace gpd
           filterGraspsDirection(hand_set_list_filtered, direction_, thresh_rad_);
       if (plot_filtered_candidates_)
       {
-        plotter_->plotFingers3D(hand_set_list_filtered, cloud.getCloudOriginal(),
+        plotter_->plotFingers3D(hand_set_list_filtered, cloud.getCloudProcessed(),
                                 "Filtered Grasps (Approach)", hand_geom);
       }
     }
@@ -296,7 +296,7 @@ namespace gpd
     hands = selectGrasps(hands);
     if (plot_valid_grasps_)
     {
-      plotter_->plotFingers3D(hands, cloud.getCloudOriginal(), "Valid Grasps",
+      plotter_->plotFingers3D(hands, cloud.getCloudProcessed(), "Valid Grasps",
                               hand_geom);
     }
 
@@ -318,7 +318,7 @@ namespace gpd
       }
       if (plot_clustered_grasps_)
       {
-        plotter_->plotFingers3D(clusters, cloud.getCloudOriginal(),
+        plotter_->plotFingers3D(clusters, cloud.getCloudProcessed(),
                                 "Clustered Grasps", hand_geom);
       }
     }
@@ -349,7 +349,7 @@ namespace gpd
 
     if (plot_selected_grasps_)
     {
-      plotter_->plotFingers3D(clusters, cloud.getCloudOriginal(),
+      plotter_->plotFingers3D(clusters, cloud.getCloudProcessed(),
                               "Selected Grasps", hand_geom, false);
     }
 
