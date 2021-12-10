@@ -5,7 +5,7 @@
 #include <ros/ros.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
-#include "grasp_detect/GraspDetect.h"
+#include "grasp_detector/GraspDetect.h"
 
 #include <pcl/point_cloud.h>
 #include <pcl_conversions/pcl_conversions.h>
@@ -44,14 +44,14 @@ private:
 public:
     DetectGraspGpdServer()
     {
-        server_ = nh_.advertiseService("/grasp_detecter/get_pose", &DetectGraspGpdServer::serverCallBack, this);
+        server_ = nh_.advertiseService("/grasp_detector/get_pose", &DetectGraspGpdServer::serverCallBack, this);
     }
     ~DetectGraspGpdServer() {}
 
-    bool serverCallBack(grasp_detect::GraspDetect::Request &req, grasp_detect::GraspDetect::Response &res);
+    bool serverCallBack(grasp_detector::GraspDetect::Request &req, grasp_detector::GraspDetect::Response &res);
 };
 
-bool DetectGraspGpdServer::serverCallBack(grasp_detect::GraspDetect::Request &req, grasp_detect::GraspDetect::Response &res)
+bool DetectGraspGpdServer::serverCallBack(grasp_detector::GraspDetect::Request &req, grasp_detector::GraspDetect::Response &res)
 {
     // Read arguments from command line.
     PCL_Cloud::Ptr rgbdCloud(new PCL_Cloud);
@@ -140,9 +140,8 @@ bool DetectGraspGpdServer::serverCallBack(grasp_detect::GraspDetect::Request &re
 
     if (handle_count == 0)
     {
-        cout << "[warning]"
-             << "no find handle!";
-        return false;
+        ROS_WARN("no find handle!");
+        return true;
     }
 
     return true;

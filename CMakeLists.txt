@@ -15,7 +15,7 @@ find_package(
   tf2_ros
   tf2_eigen
   tf2_geometry_msgs
-  grasp_detect # grasp_detect
+  grasp_detector # grasp_detect
 )
 
 # Eigen library

@@ -1,0 +1,5 @@
+<launch>
+    <!-- detect_grasps_one_stage_server -->
+    <node name="gpd_detect_grasps_server" pkg="gpd-ros" type="gpd_detect_grasps_server" respawn="false" output="screen" />
+
+</launch>
